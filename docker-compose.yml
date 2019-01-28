@@ -3,7 +3,7 @@ services:
   students-db:
     image: mysql:5.7.22
     ports:
-      - "3306:3306"
+      - "3307:3307"
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_USER: arquisoft
@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: students
       MYSQL_HOST: students-db
   students-ms:
-    build: .
+    image: smarquezo/sa_students_ms
     command: bash -c "sleep 40 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 4000 -b '0.0.0.0'"
     ports:
       - "4000:4000"
